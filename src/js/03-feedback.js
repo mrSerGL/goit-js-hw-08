@@ -4,18 +4,18 @@ const formRef = document.querySelector('.feedback-form');
 const inputEmailRef = document.querySelector('.feedback-form input');
 const inputMessageRef = document.querySelector('.feedback-form textarea');
 const STORAGE_KEY = 'feedback-form-state';
+const formData = {};
 
 restoreInputsData();
 
-formRef.addEventListener('input', throttle(saveInputsData, 1000));
+formRef.addEventListener('input', throttle(saveInputsData, 500));
 formRef.addEventListener('submit', onFormSubmit);
 
 function saveInputsData(event) {
-  const formData = {};
 
   formData.email = inputEmailRef.value;
   formData.message = inputMessageRef.value;
-//   formData[event.target.name] = event.target.value; 
+  //formData[event.target.name] = event.target.value;
   console.log(formData);
   
 
@@ -27,11 +27,18 @@ function restoreInputsData() {
   if (restoredFormData) {
     inputEmailRef.value = restoredFormData.email;
     inputMessageRef.value = restoredFormData.message;
+    // console.log(restoredFormData );
+    
   }
 }
 
 function onFormSubmit(event) {
   event.preventDefault();
+  //   console.log(formData);
+
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
+
+
+
