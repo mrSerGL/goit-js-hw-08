@@ -15,6 +15,9 @@ function saveInputsData(event) {
 
   formData.email = inputEmailRef.value;
   formData.message = inputMessageRef.value;
+//   formData[event.target.name] = event.target.value; 
+  console.log(formData);
+  
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
