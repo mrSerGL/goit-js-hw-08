@@ -5,6 +5,7 @@ const inputEmailRef = document.querySelector('.feedback-form input');
 const inputMessageRef = document.querySelector('.feedback-form textarea');
 const STORAGE_KEY = 'feedback-form-state';
 const formData = {};
+let receivedData;
 
 restoreInputsData();
 
@@ -16,9 +17,7 @@ function saveInputsData(event) {
   formData.email = inputEmailRef.value;
   formData.message = inputMessageRef.value;
   //formData[event.target.name] = event.target.value;
-  console.log(formData);
-  
-
+  receivedData = formData;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
@@ -27,14 +26,16 @@ function restoreInputsData() {
   if (restoredFormData) {
     inputEmailRef.value = restoredFormData.email;
     inputMessageRef.value = restoredFormData.message;
-    // console.log(restoredFormData );
-    
+
   }
+  receivedData = restoredFormData;
+ 
+  
 }
 
 function onFormSubmit(event) {
   event.preventDefault();
-  //   console.log(formData);
+  console.log(receivedData);
 
   event.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);

@@ -30,26 +30,29 @@ function createGalleryMarkup(galleryItems) {
 }
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
-galleryContainer.addEventListener('click', onGalleryContainerClick);
+// galleryContainer.addEventListener('click', onGalleryContainerClick);
 
-function onGalleryContainerClick(event) {
-  event.preventDefault();
+// function onGalleryContainerClick(event) {
+//   event.preventDefault();
 
-  const isGallуryItem = event.target.classList.contains('gallery__image');
+//   const isGallуryItem = event.target.classList.contains('gallery__image');
 
-  if (!isGallуryItem) {
-    return;
-  }
+//   if (!isGallуryItem) {
+//     return;
+//   }
 
-  openModal();
-}
+//   openModal();
+// }
 
-function openModal() {
-  var lightbox = new SimpleLightbox('.gallery a', {
-    /* options */
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
-}
+// function openModal() {
+//   var lightbox = new SimpleLightbox('.gallery a', {
+//     /* options */
+//     captionsData: 'alt',
+//     captionDelay: 250,
+//   });
+// }
 
-
+new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
